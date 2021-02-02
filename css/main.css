@@ -1,0 +1,109 @@
+div.button {
+    margin: 10px;
+}
+
+.subtitle {
+    background-color: #E5E5E5;
+}
+
+.title {
+    background-color: #D5D5D5;
+}
+
+.section {
+    background-color: #D5D5D5;
+    padding: 5px;
+    margin: 10px;
+}
+
+.config-panel {
+    padding: 5px;
+    margin: 10px;
+}
+
+.card-train-set, .card-train-system {
+    width: 10rem;
+    padding: 5px;
+    margin: 10px;
+    float: left;
+}
+
+.clickable:hover {
+    cursor: pointer;
+}
+
+.card-body-train-set-selected, .card-body-train-system-selected {
+    background-color: greenyellow;
+}
+
+.card-body-train-set:hover {
+    background-color: yellow;
+    cursor: pointer;
+}
+
+.card-body-train-system:hover {
+    background-color: yellow;
+    cursor: pointer;
+}
+
+.card-margin-bottom {
+    margin-bottom: 10px;
+}
+
+.train-control-block {
+    width: 600px;
+    height: 200px;
+    padding: 5px;
+    margin: 5px;
+    display: inline-block;
+}
+
+.train-upper-block {
+    height: 150px;
+    vertical-align: center;
+}
+
+.train-lower-block {
+    height: 50px;
+    vertical-align: center;
+}
+
+.gauge {
+    width: 120px;
+    height: 120px;
+}
+
+.train-block-img {
+    float: left;
+    margin: 5px;
+}
+
+.train-block-gauge {
+    float: left;
+    text-align: center;
+    margin: 5px;
+}
+
+.train-block-log {
+    float: left;
+    margin: 5px;
+}
+
+.train-block-buttons {
+    text-align: center;
+    margin: 5px;
+}
+
+.train-img {
+    max-width: 200px;
+    max-height: 120px;
+}
+
+.log {
+    font-size:10px;
+    margin: 10px;
+    width: 200px;
+    height: 100px;
+    max-height: 100px;
+    background-color: #F5F5F5;
+}
