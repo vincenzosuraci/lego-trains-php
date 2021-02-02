@@ -296,6 +296,7 @@ class LegoTrainSetup {
         }
 
         $html .= '
+                </div>
             </div>                                    
         </div>                                  
         ';
