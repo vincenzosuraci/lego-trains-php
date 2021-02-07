@@ -84,7 +84,8 @@ class LegoTrainHtml {
             
             <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>                                    
             <script type="text/javascript" src="js/bootstrap.min.js"></script>
-            <!--script type="text/javascript" src="js/bootstrap.bundle.min.js"></script-->                                    
+            <!--script type="text/javascript" src="js/bootstrap.bundle.min.js"></script-->
+            <script type="text/javascript" src="js/mqttws31.min.js"></script>                                    
             <script type="text/javascript" src="js/gauge.min.js"></script>
             <script type="text/javascript" src="js/main.js?_' . time() . '"></script>            
             

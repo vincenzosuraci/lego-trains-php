@@ -1,6 +1,14 @@
 
 var gauges = {};
 
+var mqtt = null;
+var reconnectTimeout = 2000;
+var mqtt_host = "192.168.1.250";
+var mqtt_port = 1884;
+var mqtt_user = "mqtt_user";
+var mqtt_pass = "xxx";
+var mqtt_clid = "php-lego-trains";
+
 //------------------------------------------------------------------------------------
 // ON LOAD
 //------------------------------------------------------------------------------------
@@ -14,6 +22,8 @@ function onLoad() {
     initButtons();
 
     initGauges();
+
+    initMQTT();
 
 }
 
@@ -588,4 +598,63 @@ function play_train_sound(audio) {
         e.currentTime = 0;
     });
     $("audio[data-id=" + audio + "]").get()[0].play();
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+// MQTT functions
+//----------------------------------------------------------------------------------------------------------------------
+
+function initMQTT(){
+    console.log("initMQTT() called");
+    mqtt = new Paho.MQTT.Client(mqtt_host, mqtt_port, mqtt_clid);
+
+    mqtt.onMessageArrived = function (message) {
+        console.log("Message Arrived: " + message.payloadString);
+        console.log("Topic:     " + message.destinationName);
+        console.log("QoS:       " + message.qos);
+        console.log("Retained:  " + message.retained);
+        console.log("Duplicate: " + message.duplicate);
+    }
+
+    let options = {
+        timeout:3,
+        userName: mqtt_user,
+        password: mqtt_pass,
+        onSuccess:onMqttConnectionSuccessCallback,
+        onFailure:onMqttConnectionFailureCallback
+    }
+    mqtt.connect(options);
+}
+
+function onMqttConnectionSuccessCallback(){
+    console.log("MQTT connection successful");
+    let subscribeOptions = {
+        onSuccess: onMqttSubscribeSuccessCallback,
+        onFailure: onMqttSubscribeFailureCallback,
+        timeout: 10
+    };
+    mqtt.subscribe(
+        "lego/train/position/#",
+        subscribeOptions
+    );
+}
+
+function onMqttConnectionFailureCallback(){
+    console.log("MQTT connection failure");
+}
+
+function onMqttSubscribeFailureCallback(){
+    console.log("MQTT subscribe failure");
+}
+
+function onMqttSubscribeSuccessCallback(){
+    console.log("MQTT subscribe success");
+}
+
+function onMqttPublishFailureCallback(){
+    console.log("MQTT publish failure");
+}
+
+function onMqttPublishSuccessCallback(){
+    console.log("MQTT publish success");
 }
